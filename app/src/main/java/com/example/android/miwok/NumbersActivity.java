@@ -5,7 +5,10 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,25 +22,25 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_numbers);
 
 
-        ArrayList<String> numbers = new ArrayList<String>();
-        numbers.add("one");
-        numbers.add("two");
-        numbers.add("three");
-        numbers.add("four");
-        numbers.add("five");
-        numbers.add("six");
-        numbers.add("seven");
-        numbers.add("eight");
-        numbers.add("nine");
-        numbers.add("ten");
+        ArrayList<Word> words = new ArrayList<Word>();
+        words.add(new Word("one","lutti"));
+        words.add(new Word("two","otiiko"));
+        words.add(new Word("three","tolookosu"));
+        words.add(new Word("four","oyyisa"));
+        words.add(new Word("five","massokka"));
+        words.add(new Word("six","temmokka"));
+        words.add(new Word("seven","kenekaku"));
+        words.add(new Word("eight","kawinta"));
+        words.add(new Word("nine","wo'e"));
+        words.add(new Word("ten","na'aacha"));
 
-        LinearLayout rootView = (LinearLayout) findViewById(R.id.rootView);
+        //ArrayAdapter<Word> wordsAdapter = new ArrayAdapter<Word>(this,R.layout.list_item,words);
 
-        for (int i = 0; i < numbers.size(); i++) {
-            TextView wordView = new TextView(this);
-            wordView.setText(numbers.get(i));
-            rootView.addView(wordView);
+        WordAdapter adapter = new WordAdapter(this,words);
 
-        }
+        ListView listView = (ListView) findViewById(R.id.listView);
+
+        listView.setAdapter(adapter);
+
     }
 }
