@@ -21,20 +21,18 @@ public class WordAdapter extends ArrayAdapter<Word> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View listItemView = convertView;
+        Word currentWord = getItem(position);
 
+        View listItemView = convertView;
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
 
-        Word word = getItem(position);
-
-
         TextView defaultTranslation = (TextView) listItemView.findViewById(R.id.default_text);
         TextView miwokTranslation = (TextView) listItemView.findViewById(R.id.miwok_text);
 
-        defaultTranslation.setText(word.getDefaultTranslation());
-        miwokTranslation.setText(word.getMiwokTranslation());
+        defaultTranslation.setText(currentWord.getDefaultTranslation());
+        miwokTranslation.setText(currentWord.getMiwokTranslation());
 
         return listItemView;
     }
