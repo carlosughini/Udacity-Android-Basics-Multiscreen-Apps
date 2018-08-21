@@ -59,6 +59,10 @@ public class ColorsFragment extends Fragment {
         }
     };
 
+    public ColorsFragment() {
+        // Required empty public constructor
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -80,7 +84,7 @@ public class ColorsFragment extends Fragment {
 
         // Create and WordAdapter, whose data source is a list of Words. The
         // adaoter knows how to create list items for each item in the list.
-        WordAdapter adapter = new WordAdapter(getActivity(),words,R.color.category_numbers);
+        WordAdapter adapter = new WordAdapter(getActivity(),words,R.color.category_colors);
 
         // Find the ListView object in the view hierarchy of the Activity.
         // There should be a ListView with the view ID called listView, which is declared in the
