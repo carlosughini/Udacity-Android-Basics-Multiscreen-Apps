@@ -17,14 +17,15 @@ package com.example.android.miwok;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
-    WordPagerAdapter mWordAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +34,19 @@ public class MainActivity extends AppCompatActivity {
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.view_pager);
 
-        mWordAdapter = new WordPagerAdapter(getSupportFragmentManager());
-
+        // Acha o view pager que habilitará o usuário a deslizar entre os fragments
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
 
+        // Cria um adapter que siaba qual fragment deve ser mostrado em cada página
+        WordPagerAdapter mWordAdapter = new WordPagerAdapter(this, getSupportFragmentManager());
+
+        // Seta o adapter no view pager
         viewPager.setAdapter(mWordAdapter);
+
+        // Give the TabLayout the ViewPager
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+
+        tabLayout.setupWithViewPager(viewPager);
 
         /*
         TextView numbers = (TextView) findViewById(R.id.numbers);
